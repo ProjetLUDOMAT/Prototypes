@@ -264,34 +264,39 @@ void loop() {
 //-----------------------------   moteur 1 ou 2  ---------------------  <<  >>
       case UP : 
       case UP1 : 
-        isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
            if(programmation)  {
             empile( avant); 
             stop();
            } else {
+            isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
             moteur(avant,vitesse);countM++;
            }
              break;
       case DOWN :
       case DOWN1 :
-        isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
             if(programmation){
               empile( arriere); stop();
             }
             else {
-              moteur(arriere,vitesse);countM++;
+               isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
+               moteur(arriere,vitesse);countM++;
             }
              break;
 //-----------------------------   virage  ---------------------  +  -
        case RIGHT : 
        case RIGHT1 :
-         isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente 
-            moteur(droite,vitesse);countM++;if(programmation) empile( droite);
+             if(programmation) empile( droite); else {
+              isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+              moteur(droite,vitesse);countM++;
+            }
+            
             break;
        case   LEFT :
-       case   LEFT1 :
-         isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
-            moteur(gauche,vitesse);countM++;if(programmation) empile( gauche);
+       case   LEFT1 :       
+            if(programmation) empile( gauche); else {
+              isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+              moteur(gauche,vitesse);countM++;
+            }
             break;
 //---------------- STOP---------------
       case   ENTER :
@@ -304,6 +309,7 @@ void loop() {
       case   ONOFF1 :
             stop(); // arret moteur
             programmation = 1 ;
+            Index=0;erreur=0;erreur2=0;  isr_compte = 0 ;isr_compte2 = 0 ;lastDirection = avant;
             break;
    //---------------- retour  ---------------
       case   BACK :
