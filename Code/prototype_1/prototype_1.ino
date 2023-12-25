@@ -285,18 +285,15 @@ void loop() {
 //-----------------------------   virage  ---------------------  +  -
        case RIGHT : 
        case RIGHT1 :
-             if(programmation) empile( droite); else {
-              isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
-              moteur(droite,vitesse);countM++;
-            }
-            
-            break;
+             isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+             moteur(droite,vitesse);countM++;
+             if(programmation) empile( droite);        
+             break;
        case   LEFT :
-       case   LEFT1 :       
-            if(programmation) empile( gauche); else {
-              isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
-              moteur(gauche,vitesse);countM++;
-            }
+       case   LEFT1 :
+            isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+            moteur(gauche,vitesse);countM++;       
+            if(programmation) empile( gauche);
             break;
 //---------------- STOP---------------
       case   ENTER :
