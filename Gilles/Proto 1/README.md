@@ -19,4 +19,6 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
 - __3 accus Li-ion__
 - __2 moteurs à courant continu avec encodeurs__
 
-## 
+## Installation
+
+Charger tout d'abord l'interpreteur micropython sur la carte RP2, puis copier les fichiers .py ci-dessus dans le répertoire principal. A la mise sous tension le robot est prêt à fonctionner.
