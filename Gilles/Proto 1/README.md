@@ -18,9 +18,20 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
 - __telecommande IR__ : https://fr.aliexpress.com/item/1005005880586343.html?spm=a2g0o.order_list.order_list_main.5.50145e5bUaWUCF&gatewayAdapt=glo2fra
 - __3 accus Li-ion__
 - __2 moteurs à courant continu avec encodeurs__
+- __roue libre__ : https://www.gotronic.fr/art-roue-libre-1-2-952-37787.htm
+
+## Réalisation
+
+Les moteurs de ce prototype sont des moteurs récupérés sur l'entrainement scanner d'une imprimante jet d'encre. Ils ont l'avantage d'être munis d'encodeurs à signaux en quadrature permettant de déterminer la position, la vitesse et le sens de rotation de chacune des roues. 
+
+Les roues, de diamètre 60mm, ont été fabriquées en impression 3D. Compte-tenu de la réduction (engrenages plastiques), chaque encodeur fournit 1450 pulses par tour, ce qui donne une précision très satisfaisante sur la position (et la vitesse).
 
 ## Installation
 
-Avec l'IDE Arduino, téléverser le fichier _IRrecvDemo.ino_ dans l'_ESP01_. Ce dernier est alors programmé pour recevoir en continu les signaux de la télécommande etles transmettre au _RP2_ sur la liaison série UART1. Par défaut, les messages IR utilisés sont ceux de la télécommande ci-dessus ("chinoise"). Il est possible d'utiliser un autre modèle à condition de remplacer le fichier _codes_chi.py_ par un fichier contenant les nouveaux codes. Ci-dessus, _codes_pan_ = Panasonic, _codes_phi_ = Philips, _codes_sam_ = samsung.
+Avec l'IDE Arduino, téléverser le fichier _IRrecvDemo.ino_ dans l'_ESP01_. Ce dernier est alors programmé pour recevoir en continu les signaux de la télécommande et les transmettre au _RP2_ sur la liaison série UART1. Par défaut, les messages IR utilisés sont ceux de la télécommande ci-dessus ("chinoise"). Il est possible d'utiliser un autre modèle à condition de remplacer le fichier _codes_chi.py_ par un fichier contenant les nouveaux codes. Ci-dessus, _codes_pan.py_ = Panasonic, _codes_phi.py_ = Philips, _codes_sam.py_ = samsung.
 
 Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fichiers .py ci-dessus dans le répertoire principal. A la mise sous tension le robot est prêt à fonctionner.
+
+Les moteurs de ce prototype sont des moteurs récupérés sur l'entrainement scanner d'une imprimante jet d'encre. Ils ont l'avantage d'être munis d'encodeurs à signaux en quadrature permettant de déterminer la position, la vitesse et le sens de rotation de chacune des roues. 
+
+Les roues, de diamètre 60mm, ont été fabriquées en impression 3D. Compte-tenu de la réduction (engrenages plastiques), chaque encodeur fournit 1450 pulses par tour, ce qui donne une précision très satisfaisante sur la position (et la vitesse).
