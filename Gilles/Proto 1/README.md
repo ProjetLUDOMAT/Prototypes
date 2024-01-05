@@ -11,6 +11,8 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
 ## Schéma electrique
 ![](Schema.png)
 
+![](photo_3.png)
+
 ## Liste de materiel:
 - __Raspberry Pico__ : https://www.gotronic.fr/art-carte-raspberry-pi-pico-33027.htm
 - __double pont en H L293D__ : https://fr.aliexpress.com/item/1005002353427075.html?spm=a2g0o.productlist.main.3.14663569oxLbhK&algo_pvid=8de3ca22-5cb1-48df-9fe9-7c8bb00ba52a&aem_p4p_detail=2024010508370610190557626394800001630882&algo_exp_id=8de3ca22-5cb1-48df-9fe9-7c8bb00ba52a-1&pdp_npi=4%40dis%21EUR%211.19%211.12%21%21%211.27%21%21%40211b441e17044726268263095e7a37%2112000020247945456%21sea%21FR%212002504188%21&curPageLogUid=IB6YHhc8YZJ4&utparam-url=scene%3Asearch%7Cquery_from%3A&search_p4p_id=2024010508370610190557626394800001630882_2
