@@ -1,4 +1,4 @@
-![](photo_1.png)
+
 
 ## Introduction
 
