@@ -9,7 +9,7 @@ Il utilise deux moteurs à courant continu munis chacun d'un encodeur optique et
 L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buck-boost fournit les 5V nécessaires au RP2.
 
 ## Schéma electrique
-![](Ludomat_1.png)
+![](Schema.png)
 
 ## Liste de materiel:
 - __Raspberry Pico__ : https://www.gotronic.fr/art-carte-raspberry-pi-pico-33027.htm
