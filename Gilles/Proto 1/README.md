@@ -21,4 +21,6 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
 
 ## Installation
 
-Charger tout d'abord l'interpreteur micropython sur la carte RP2, puis copier les fichiers .py ci-dessus dans le répertoire principal. A la mise sous tension le robot est prêt à fonctionner.
+Avec l'IDE Arduino, téléverser le fichier _IRrecvDemo.ino_ dans l'_ESP01_. Ce dernier est alors programmé pour recevoir en continu les signaux de la télécommande etles transmettre au _RP2_ sur la liaison série UART1.
+
+Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fichiers .py ci-dessus dans le répertoire principal. A la mise sous tension le robot est prêt à fonctionner.
