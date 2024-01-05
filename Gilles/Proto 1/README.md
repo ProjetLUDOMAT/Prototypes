@@ -40,4 +40,6 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 
 ## Fonctionnement
 
+![](telecommande.png)
+
   
