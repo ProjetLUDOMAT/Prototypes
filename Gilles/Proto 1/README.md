@@ -32,6 +32,8 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
   <img src="./photo_3.png" width="700" />
 <p/>
 
+Le chassis est en contreplaqué d'épaisseur 5mm.
+
 Les moteurs de ce prototype sont des moteurs récupérés sur l'entrainement scanner d'une imprimante jet d'encre. Ils ont l'avantage d'être munis d'encodeurs à signaux en quadrature permettant de déterminer la position, la vitesse et le sens de rotation de chacune des roues. 
 
 <p align="center">
