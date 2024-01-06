@@ -8,7 +8,7 @@ Plusieurs différences cependant : le chassis, les moteurs et les roues provienn
 
 ## Schéma electrique
 
-![](Schema.png).
+![](Schema.svg).
 
 ## Réalisation
 
