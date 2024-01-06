@@ -14,6 +14,10 @@ Plusieurs différences cependant : le chassis, les moteurs et les roues provienn
 
 ![](photo_2.png).
 
+Pour simplifier et compte tenu de la taille du chassis, les connections sont réalisées sur deux breadboards.
+
+Le diamètre des roues est de 65mm.
+
 Pour Palier l'absence de deuxième voie sur les encodeurs, les broches 1 et 3 du RP2 sont connectées (resp.) aux broches 14 et 17 (dont l'état donne le sens de la commande des moteurs, et non le sens réel).
 
 ![](photo_3.png).
@@ -35,6 +39,6 @@ Identique à celle de Proto 1 :
 - __dcMotor.py__ : driver de moteur à courant continu.
 - __PioEncoder.py__ : driver d'encodeur optique. Il est basé sur les machines d'état (Pio) du RP2.
 - __codes_chi.py__ : codes infra-rouges de la télécommande (avec la fonction de lecture _decode_ir_).
-- __proto_ludomat_1.py__ : script principal
+- __proto_ludomat_2.py__ : script principal
   
-  la fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur PD (proportionnelle-dérivée) pour chacun des moteurs. L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=3. L'erreur de position linéaire est donc au maximum de : 3/1450 x pi x 60 = 0,4 mm pour chacune des roues.
+  Lla fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur proportionnel pour chacun des moteurs (au contraire de Proto 1, la correction PD n'est pas nécéssaire ici). L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=1. L'erreur de position linéaire est donc au maximum de : 1/20 x pi x 65 = 10 mm pour chacune des roues, ce qui est assez médiocre. Pour une améloriation de la précision, voir le code d'Arnaud.
