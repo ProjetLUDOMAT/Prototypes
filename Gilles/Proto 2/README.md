@@ -14,6 +14,15 @@ Plusieurs différences cependant : le chassis, les moteurs et les roues provienn
   <img src="./Schema.png" width="700" />
 <p/>
 
+## Liste de materiel:
+- __Raspberry Pico__ : https://www.gotronic.fr/art-carte-raspberry-pi-pico-33027.htm
+- __double pont en H L293D__ : https://www.gotronic.fr/art-l293d-14072.htm
+- __diode IR TL1838__ (ou équivalent): https://fr.aliexpress.com/item/4000610270256.html?spm=a2g0o.order_list.order_list_main.114.5f2c5e5bFkj0JY&gatewayAdapt=glo2fra
+- __ESP01__ : https://fr.aliexpress.com/item/1005004626018608.html?spm=a2g0o.productlist.main.5.202a387dOWbNPY&algo_pvid=d97af2e1-680c-470d-a23e-a5389708092f&aem_p4p_detail=20240105083824621622498933800001715866&algo_exp_id=d97af2e1-680c-470d-a23e-a5389708092f-2&pdp_npi=4%40dis%21EUR%216.00%216.0%21%21%216.42%21%21%40211b81a317044727042931116e5c51%2112000029882404227%21sea%21FR%212002504188%21&curPageLogUid=mbNFmuIELFBq&utparam-url=scene%3Asearch%7Cquery_from%3A&search_p4p_id=20240105083824621622498933800001715866_3
+- __telecommande IR__ : https://fr.aliexpress.com/item/1005005880586343.html?spm=a2g0o.order_list.order_list_main.5.50145e5bUaWUCF&gatewayAdapt=glo2fra
+- __kit robot 2 roues__ : https://fr.aliexpress.com/item/1005006101550871.html?spm=a2g0o.order_list.order_list_main.168.46aa5e5bvzKPRG&gatewayAdapt=glo2fra
+- __4 piles AA ou 4 accus NiMh__
+
 ## Réalisation
 
 <p align="center">
