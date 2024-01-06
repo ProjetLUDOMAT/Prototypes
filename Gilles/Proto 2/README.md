@@ -1,4 +1,4 @@
-![](photo_1.png).
+<img src="./photo_1.png" width="400" />
 
 ## Introduction
 
@@ -8,11 +8,11 @@ Plusieurs différences cependant : le chassis, les moteurs et les roues provienn
 
 ## Schéma electrique
 
-![](Schema.svg).
+<img src="./Schema.png" width="700" />
 
 ## Réalisation
 
-![](photo_2.png).
+<img src="./photo_2.png" width="700" />
 
 Pour simplifier et compte tenu de la taille du chassis, les connections sont réalisées sur deux breadboards.
 
@@ -20,7 +20,7 @@ Le diamètre des roues est de 65mm.
 
 Pour Palier l'absence de deuxième voie sur les encodeurs, les broches 1 et 3 du RP2 sont connectées (resp.) aux broches 14 et 17 (dont l'état donne le sens de la commande des moteurs, et non le sens réel).
 
-![](photo_3.png).
+<img src="./photo_3.png" width="700" />
 
 
 ## Installation
@@ -32,7 +32,7 @@ Identique à celle de Proto 1 :
 
 ## Fonctionnement
 
-![](telecommande.png)
+<img src="./telecommande.png" width="400" />
 
 ## Code
 
