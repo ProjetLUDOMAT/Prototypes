@@ -7,4 +7,8 @@ L'alimentation est confiée à une batterie de 3 accus Li-ion en série (Vd=11,1
 
 ## Schéma electrique
 
+<p align="center">
+<img src="./Schema.png" width="700">
+<p/>
+
 
