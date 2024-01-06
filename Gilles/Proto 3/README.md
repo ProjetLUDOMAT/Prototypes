@@ -1,4 +1,7 @@
-
+<p align="center">
+  <img src="./photo_1.png" width="700" />
+<p/>
+  
 ## Introduction
 
 Ce troisième prototype utilise, comme les deux premiers, un Raspberry Pico (RP2) programmé en micropython, mais les moteurs à courant continu sont remplacés par deux moteurs pas-a-pas qui présentent l'avantage d'une grande précision de positionnement angulaire et d'une commande simple (commande en boucle ouverte, pas de correcteur type PID).
