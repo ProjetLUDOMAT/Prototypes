@@ -49,4 +49,4 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 - __codes_chi.py__ : codes infra-rouges de la télécommande (avec la fonction de lecture).
 - __proto_ludomat_1.py__ : script principal
   
-  la fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur PD (proportionnelle-dérivée). L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=3. L'erreur de position linéaire est donc au maximum de : 3/1450*pi*60 = 0,4 mm pour chacune des roues.
+  la fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur PD (proportionnelle-dérivée) pour chacun des moteurs. L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=3. L'erreur de position linéaire est donc au maximum de : 3/1450*pi*60 = 0,4 mm pour chacune des roues.
