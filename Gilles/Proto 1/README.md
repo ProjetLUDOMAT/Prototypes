@@ -1,4 +1,6 @@
-![](photo_1.png)
+<p align="center">
+  <img src="./photo_1.png" width="700" />
+<p/>
 
 ## Introduction
 
@@ -9,9 +11,9 @@ Il utilise deux moteurs à courant continu munis chacun d'un encodeur optique et
 L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buck-boost fournit les 5V nécessaires au RP2.
 
 ## Schéma electrique
-![](Schema.png)
-
-![](photo_3.png)
+<p align="center">
+  <img src="./Schema.png" width="700" />
+<p/>
 
 ## Liste de materiel:
 - __Raspberry Pico__ : https://www.gotronic.fr/art-carte-raspberry-pi-pico-33027.htm
@@ -26,9 +28,15 @@ L'alimentation des moteurs se fait en 12V (3 accus Li-ion). Un convertisseur buc
 
 ## Réalisation
 
+<p align="center">
+  <img src="./photo_3.png" width="700" />
+<p/>
+
 Les moteurs de ce prototype sont des moteurs récupérés sur l'entrainement scanner d'une imprimante jet d'encre. Ils ont l'avantage d'être munis d'encodeurs à signaux en quadrature permettant de déterminer la position, la vitesse et le sens de rotation de chacune des roues. 
 
-![](photo_2.png)
+<p align="center">
+  <img src="./photo_2.png" width="700" />
+<p/>
 
 Les roues, de diamètre 60mm, ont été fabriquées en impression 3D. Compte-tenu de la réduction (engrenages plastiques), chaque encodeur fournit 1450 pulses par tour, ce qui donne une précision très satisfaisante sur la position (et la vitesse).
 
@@ -40,7 +48,9 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 
 ## Fonctionnement
 
-![](telecommande.png)
+<p align="center">
+  <img src="./telecommande.png" width="400" />
+<p/>
 
 ## Code
 
