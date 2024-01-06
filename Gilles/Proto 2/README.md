@@ -14,6 +14,11 @@ Plusieurs différences cependant : le chassis, les moteurs et les roues provienn
 
 ![](photo_2.png).
 
+Pour Palier l'absence de deuxième voie sur les encodeurs, les broches 1 et 3 du RP2 sont connectées (resp.) aux broches 14 et 17 (dont l'état donne le sens de la commande des moteurs, et non le sens réel).
+
+![](photo_3.png).
+
+
 ## Installation
 
 Identique à celle de Proto 1 :
