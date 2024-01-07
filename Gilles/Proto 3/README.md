@@ -66,7 +66,7 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 - __codes_chi.py__ : codes infra-rouges de la télécommande (avec la fonction de lecture _decode_ir_).
 - __proto_ludomat_3.py__ : script principal
   
-  Le déplacement linéaire pour un pas de moteur est : 1/1055 x pi x 47 = 0,14 mm ce qui permet d'atteindre aisément des déplacements de grande précision (pas de 15cm, rotation de 90°).
+  Le déplacement linéaire pour un pas de moteur est : 1/1055 x pi x 47 = 0,14 mm ce qui permet d'atteindre aisément d'effectuer des mouvements  de grande précision (pas de 15cm, rotation de 90°).
 
 
 
