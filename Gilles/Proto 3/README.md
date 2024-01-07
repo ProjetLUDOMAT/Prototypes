@@ -35,7 +35,7 @@ Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V
 Les compoasnts sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont vissés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
 
 <p align="center">
-  <img src="./photo_2.png" width="700" />
+  <img src="./photo_2.png" width="400" />
 <p/>
   
 La fixation des roues (diamètre 47mm) sur les arbres de sortie moteur a nécessité la fabrication d'un adaptateur (impression 3D).
