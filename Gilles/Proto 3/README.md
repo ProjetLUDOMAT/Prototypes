@@ -28,11 +28,11 @@ L'alimentation est confiée à une batterie de 3 accus Li-ion en série : Vd=12V
 
 Les 24BYJ48 sont des moteurs 5V - 300mA. Le nombre de pas par tour d'arbre en sortie est 1055 (mesuré).
 
-Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V d'où le choix de la batterie Li-ion, mais l'intensité maximale est réglable à l'aide d'un potentiomètre ce qui permet leur utilisation avec les 24BYJ48. Le passage de la broche EN (enable) à l'état haut permet de couper l'intensité dans les enroulements du moteur lorsque celui-ci est immobile, et évite l'échauffement. La contrepartie est l'absence de couple de maintien au repos (inutile ici). 
+Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V d'où le choix de la batterie Li-ion, mais l'intensité maximale est réglable à l'aide d'un potentiomètre ce qui permet son utilisation avec le 24BYJ48. Le passage de la broche EN (enable) à l'état haut permet de couper l'intensité dans les enroulements du moteur lorsque celui-ci est immobile, et évite l'échauffement. La contrepartie est l'absence de couple de maintien au repos (inutile ici). 
 
 ## Réalisation
 
-Les composants sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont vissés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
+Les composants sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont fixés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
 
 <p align="center">
   <img src="./photo_2.png" width="400" />
@@ -44,7 +44,7 @@ La fixation des roues (diamètre 47mm) sur les arbres de sortie moteur a nécess
   <img src="./photo_3.png" width="700" />
 <p/>
   
-Les trois accus sont fixés sur la chassis à l'aide de velcro autocollant afin de les rendre amovibles.
+Les trois accus sont fixés sur le chassis à l'aide de velcro autocollant afin de les rendre amovibles.
 
 Avant la mise sous tension, il faut régler la limite en courant de sortie des DRV8825 (300mA) : https://www.pololu.com/product/2133
 
