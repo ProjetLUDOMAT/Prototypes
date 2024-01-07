@@ -26,6 +26,10 @@ L'alimentation est confiée à une batterie de 3 accus Li-ion en série : Vd=12V
 - __2 moteurs pas-a-pas bipolaires__ : https://www.gotronic.fr/art-moteur-24byj48-19028.htm
 - __roue libre__ : https://www.gotronic.fr/art-roue-libre-1-2-952-37787.htm
 
+Les 24BYJ48 sont des moteurs 5V - 300mA. Le nombre de pas par tour d'arbre en sortie est 1055 (mesuré).
+
+Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V d'où le choix de la batterie Li-ion, mais l'intensité maximale est réglable à l'aide d'un potentiomètre ce qui permet leur utilisation avec les 24BYJ48. 
+
 ## Réalisation
 
 Les compoasnts sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont vissés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
