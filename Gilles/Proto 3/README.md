@@ -44,6 +44,8 @@ La fixation des roues (diamètre 47mm) sur les arbres de sortie moteur a nécess
   <img src="./photo_3.png" width="700" />
 <p/>
 
+Avant la mise sous tension, il faut régler la limite en courant de sortie des DRV8825 (300mA) : https://www.pololu.com/product/2133
+
 ## Installation
 
 Avec l'IDE Arduino, téléverser le fichier _IRrecvDemo.ino_ dans l'_ESP01_. Ce dernier est alors programmé pour recevoir en continu les signaux de la télécommande et les transmettre au _RP2_ sur la liaison série UART1. La vitesse de transmission est fixée à 9600 bauds, mais elle peut être augmentée à 115200 bauds sans difficulté. Par défaut, le codage IR utilisé est celui de la télécommande ci-dessus ("chinoise"). Il est possible d'utiliser un autre modèle à condition de remplacer le fichier _codes_chi.py_ par un fichier contenant les nouveaux codes. Ci-dessus, _codes_pan.py_ = Panasonic, _codes_phi.py_ = Philips, _codes_sam.py_ = samsung.
@@ -58,10 +60,9 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 
 ## Code
 
-- __dcMotor.py__ : driver de moteur à courant continu.
-- __PioEncoder.py__ : driver d'encodeur optique. Il est basé sur les machines d'état (Pio) du RP2.
+- __pwmStepper.py__ : driver de moteur pas-à-pas.
 - __codes_chi.py__ : codes infra-rouges de la télécommande (avec la fonction de lecture _decode_ir_).
-- __proto_ludomat_1.py__ : script principal
+- __proto_ludomat_3.py__ : script principal
   
   la fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur PD (proportionnelle-dérivée) pour chacun des moteurs. L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=3. L'erreur de position linéaire est donc au maximum de : 3/1450 x pi x 60 = 0,4 mm pour chacune des roues.
 
