@@ -28,11 +28,11 @@ L'alimentation est confiée à une batterie de 3 accus Li-ion en série : Vd=12V
 
 Les 24BYJ48 sont des moteurs 5V - 300mA. Le nombre de pas par tour d'arbre en sortie est 1055 (mesuré).
 
-Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V d'où le choix de la batterie Li-ion, mais l'intensité maximale est réglable à l'aide d'un potentiomètre ce qui permet leur utilisation avec les 24BYJ48. 
+Le driver DRV8825 nécessite une tension d'alimentation moteur supérieure à 8V d'où le choix de la batterie Li-ion, mais l'intensité maximale est réglable à l'aide d'un potentiomètre ce qui permet leur utilisation avec les 24BYJ48. Le passage de la broche EN (enable) à l'état haut permet de couper l'intensité dans les enroulements du moteur lorsque celui-ci est immobile, et évite l'échauffement. La contrepartie est l'absence de couple de maintien au repos (inutile ici). 
 
 ## Réalisation
 
-Les compoasnts sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont vissés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
+Les composants sont implantés sur un circuit imprimé 100mmx70mm qui sert également de chassis. Les moteurs sont vissés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
 
 <p align="center">
   <img src="./photo_2.png" width="400" />
@@ -43,6 +43,8 @@ La fixation des roues (diamètre 47mm) sur les arbres de sortie moteur a nécess
 <p align="center">
   <img src="./photo_3.png" width="700" />
 <p/>
+  
+Les trois accus sont fixés sur la chassis à l'aide de velcro autocollant afin de les rendre amovibles.
 
 Avant la mise sous tension, il faut régler la limite en courant de sortie des DRV8825 (300mA) : https://www.pololu.com/product/2133
 
@@ -64,10 +66,8 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
 - __codes_chi.py__ : codes infra-rouges de la télécommande (avec la fonction de lecture _decode_ir_).
 - __proto_ludomat_3.py__ : script principal
   
-  la fonction _go_position_ qui permet d'atteindre la position cible contient un correcteur PD (proportionnelle-dérivée) pour chacun des moteurs. L'arrêt du moteur se fait à l'interieur d'un intervalle centré sur la position cible (_tgt_count_) de largeur _dead_zone_=3. L'erreur de position linéaire est donc au maximum de : 3/1450 x pi x 60 = 0,4 mm pour chacune des roues.
+  Le déplacement linéaire pour un pas de moteur est : 1/1055 x pi x 47 = 0,14 mm ce qui permet d'atteindre aisément des déplacements de grande précision (pas de 15cm, rotation de 90°).
 
-<p/>
-  
-Les trois accus sont fixés sur la chassis à l'aide de velcro autocollant afin de les rendre amovibles.
+
 
 
