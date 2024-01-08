@@ -15,10 +15,13 @@ m1.setSpeed(0.5)
 
 u = UART(0, 9600)
 
+led = Pin(25, Pin.OUT)
+
 one_move = 1027
 one_turn = 738
 
 ############
+
 def forward():
     m0.doSteps(one_move)
     m1.doSteps(one_move)
@@ -51,19 +54,47 @@ def turnright():
     m0.disable()
     m1.disable()
 
+def execute():
+    for cmd in cmd_list:
+        sleep_ms(1000)
+        cmd_dict[cmd]()
+
+cmd_dict  = {'u':forward, 'd':backward, 'l':turnleft, 'r':turnright}
+cmd_list  = []
+mode_prog = False
+
 ############
+
+# while True:
+#     cmd = decode_ir(u)
+#     if cmd == 'u':
+#         forward()
+#     elif cmd == 'd':
+#         backward()
+#     elif cmd == 'l':
+#         turnleft()
+#     elif cmd == 'r':
+#         turnright()
+#     elif  cmd == '0':
+#         pass
+#     elif cmd == 'e':
+#         break
 
 while True:
     cmd = decode_ir(u)
-    if cmd == 'u':
-        forward()
-    elif cmd == 'd':
-        backward()
-    elif cmd == 'l':
-        turnleft()
-    elif cmd == 'r':
-        turnright()
-    elif  cmd == '0':
-        pass
-    elif cmd == 'e':
+    if cmd == 'o':                    # on/off
+        cmd_list = []
+        mode_prog = not mode_prog
+        led.toggle()
+    elif cmd == '0':                  # ok
+        execute()
+    elif cmd == 'e':                  # enter
         break
+    else:
+        if mode_prog:
+            cmd_list.append(cmd_dict[cmd])
+        else:
+            sleep_ms(1000)
+            cmd_dict[cmd]()
+
+
