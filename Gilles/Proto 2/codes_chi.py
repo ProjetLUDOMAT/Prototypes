@@ -1,11 +1,11 @@
 # Telecomande chinoise
 codes = {
-    b'1FEE41B\r\n':'0',  # touche ok
+    b'1FEE41B\r\n':'e',  # touche return
     b'1FEEC13\r\n':'l',
     b'1FE9C63\r\n':'r',
     b'1FE1CE3\r\n':'u',
     b'1FE02FD\r\n':'d',
-    b'1FEC837\r\n':'e',  # touche return
+    b'1FEC837\r\n':'0',  # touche ok
     b'1FEE11E\r\n':'+',
     b'1FE916E\r\n':'-',
     b'1FE12ED\r\n':'m',  # touche mouse
