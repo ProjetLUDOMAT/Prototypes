@@ -60,6 +60,18 @@ Charger ensuite l'interpreteur micropython sur la carte RP2, puis copier les fic
   <img src="./telecommande.png" width="400" />
 <p/>
 
+Le robot possède deux modes de fonctionnement : 'RUN' et 'PROGRAMME'. La touche ON/OFF permet de switcher d'un mode à l'autre. En mode 'PROGRAMME', la led verte du RP2 est allumée.
+
+Au démarrage, le robot est en mode 'RUN' : le mouvement est exécuté 1 seconde après pression sur la touche de commande.
+
+En mode 'PROGRAMME':
+
+- les mouvements sont ajoutés séquentiellement dans le programme à chaque pression de touche, mais non executés,
+- la touche OK provoque l'exécution du programme enregistré à partir du début. Les mouvements sont espacés de 1 seconde,
+- la touche ON/OFF provoque la remise à zéro du programme et le passage en mode 'RUN'.
+
+La touche RETURN termine l'execution du script. Il faut rebooter le RP2 pour le relancer.
+
 ## Code
 
 - __pwmStepper.py__ : driver de moteur pas-à-pas.
