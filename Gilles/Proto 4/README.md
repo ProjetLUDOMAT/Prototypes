@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./photo_1.png" width="500" />
+  <img src="./photo_proto_4.png" width="500" />
 <p/>
   
 ## Introduction
