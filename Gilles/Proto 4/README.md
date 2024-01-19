@@ -24,3 +24,21 @@ Quatrieme prototype, très proche de Proto 3. Mêmes moteurs et mêmes drivers. 
 - __2 moteurs pas-a-pas bipolaires__ : https://www.gotronic.fr/art-moteur-24byj48-19028.htm
 - __roue libre__ : [https://www.gotronic.fr/art-roue-libre-1-2-952-37787.htm](https://fr.aliexpress.com/item/1005005888599065.html?spm=a2g0o.order_list.order_list_main.36.7f2b5e5b4IaUvN&gatewayAdapt=glo2fra)https://fr.aliexpress.com/item/1005005888599065.html?spm=a2g0o.order_list.order_list_main.36.7f2b5e5b4IaUvN&gatewayAdapt=glo2fra
 - __interrupteur miniature__ : https://fr.aliexpress.com/item/1005006245665830.html?spm=a2g0o.order_list.order_list_main.24.7f2b5e5b4IaUvN&gatewayAdapt=glo2fra
+
+## Réalisation
+
+Les composants sont implantés sur un circuit imprimé 100mmx100mm qui sert également de chassis (fichier _typon_proto_4.svg_). Les moteurs sont fixés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
+
+<p align="center">
+  <img src="./photo_2.png" width="400" />
+<p/>
+  
+Les roues sont fabriquées en impression 3D (fichier _roues.stl_). Les pneus sont faits en chambre à air de vélo (2 couches).
+
+<p align="center">
+  <img src="./photo_3.png" width="700" />
+<p/>
+  
+L'accu est fixé sur le chassis à l'aide de velcro autocollant afin de les rendre amovibles.
+
+Avant la mise sous tension, il faut régler la limite en courant de sortie des DRV8825 (300mA) : https://www.pololu.com/product/2133
