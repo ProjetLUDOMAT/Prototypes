@@ -9,7 +9,7 @@ Quatrieme prototype, très proche de Proto 3. Mêmes moteurs et mêmes drivers. 
 ## Schéma electrique
 
 <p align="center">
-<img src="./Schema.png" width="700">
+<img src="./implantation_composants_proto_4.svg" width="700">
 <p/>
 
 
