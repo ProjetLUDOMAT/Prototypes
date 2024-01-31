@@ -36,7 +36,7 @@ Les composants sont implantés sur un circuit imprimé 100mmx100mm qui sert éga
 Les roues sont fabriquées en impression 3D (fichier _roues.stl_). Les pneus sont faits en chambre à air de vélo (2 couches).
 
 <p align="center">
-  <img src="./photo_3.png" width="700" />
+  <img src="./roue.png" width="400" />
 <p/>
   
 L'accu est fixé sur le chassis à l'aide de velcro autocollant afin de le rendre amovible.
