@@ -51,7 +51,7 @@ Après le boot, le robot attend l'association avec une télécommande : la diode
   <img src="./telecommandes.png" width="600" />
 <p/>
 
-Le robot possède deux modes de fonctionnement : 'RUN' et 'PROGRAMME'. La touche ON/OFF permet de switcher d'un mode à l'autre. En mode 'PROGRAMME', la led verte du RP2 est allumée.
+Le robot possède deux modes de fonctionnement : 'RUN' et 'PROGRAMME'. La touche ON/OFF permet de switcher d'un mode à l'autre. En mode 'RUN', la diode neopixel est allumée en vert, en mode 'PROGRAMME', elle est allumée en bleu.
 
 Au démarrage, le robot est en mode 'RUN' : le mouvement est exécuté 1 seconde après pression sur la touche de commande.
 
@@ -61,4 +61,4 @@ En mode 'PROGRAMME':
 - la touche OK provoque l'exécution du programme enregistré à partir du début. Les mouvements sont espacés de 1 seconde,
 - la touche ON/OFF provoque la remise à zéro du programme et le passage en mode 'RUN'.
 
-La touche RETURN termine l'execution du script. Il faut rebooter le RP2 pour le relancer.
+La touche RETURN termine l'execution du script. Il faut rebooter le RP2 (OFF/ON sur l'interrupteur) pour le relancer.
