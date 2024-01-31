@@ -4,7 +4,7 @@
   
 ## Introduction
 
-Quatrieme prototype, très proche de Proto 3. Mêmes moteurs et mêmes drivers. Le microcontrolleur est un RP2040 Zero, clone chinois du Raspberry Pico à 23 broches seulement (20 GPIOs). Deux LEDs blanches ont été ajoutées à l'avant pour indiquer le sens de déplacement. La diode neopixel du RP2040 Zero est utilisée pour indiquer le mode de fonctionnement.
+Quatrieme prototype, très proche de Proto 3. Mêmes moteurs et mêmes drivers. Le microcontrolleur est un RP2040 Zero, clone chinois du Raspberry Pico à 23 broches seulement (20 GPIOs). Deux LEDs blanches ont été ajoutées à l'avant pour indiquer le sens de déplacement. La diode neopixel du RP2040 Zero est utilisée pour indiquer le mode de fonctionnement. Un algorithme de détection de la télécommande a été ajouté.
 
 ## Schéma electrique
 
