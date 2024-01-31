@@ -51,6 +51,8 @@ Après le boot, le robot attend l'association avec une télécommande : la diode
   <img src="./telecommandes.png" width="600" />
 <p/>
 
+__Attention__ : seules, les touches entourées en vert sur la photo sont reconnues : ON/OFF, GAUCHE, DROITE, HAUT, BAS, OK et RETURN.
+
 Le robot possède deux modes de fonctionnement : 'RUN' et 'PROGRAMME'. La touche ON/OFF permet de switcher d'un mode à l'autre. En mode 'RUN', la diode neopixel est allumée en vert, en mode 'PROGRAMME', elle est allumée en bleu.
 
 Au démarrage, le robot est en mode 'RUN' : le mouvement est exécuté 1 seconde après pression sur la touche de commande.
