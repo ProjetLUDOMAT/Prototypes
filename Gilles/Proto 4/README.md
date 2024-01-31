@@ -39,6 +39,6 @@ Les roues sont fabriquées en impression 3D (fichier _roues.stl_). Les pneus son
   <img src="./photo_3.png" width="700" />
 <p/>
   
-L'accu est fixé sur le chassis à l'aide de velcro autocollant afin de les rendre amovibles.
+L'accu est fixé sur le chassis à l'aide de velcro autocollant afin de le rendre amovible.
 
 Avant la mise sous tension, il faut régler la limite en courant de sortie des DRV8825 (300mA) : https://www.pololu.com/product/2133
