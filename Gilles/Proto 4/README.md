@@ -62,5 +62,6 @@ En mode 'PROGRAMME':
 - les mouvements sont ajoutés séquentiellement dans le programme à chaque pression de touche, mais non executés,
 - la touche OK provoque l'exécution du programme enregistré à partir du début. Les mouvements sont espacés de 1 seconde,
 - la touche ON/OFF provoque la remise à zéro du programme et le passage en mode 'RUN'.
+- le passage en mode RUN efface la totalité du programme enregistré.
 
 La touche RETURN termine l'execution du script. Il faut rebooter le RP2 (OFF/ON sur l'interrupteur) pour le relancer.
