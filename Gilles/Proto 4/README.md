@@ -30,7 +30,7 @@ Quatrieme prototype, très proche de Proto 3. Mêmes moteurs et mêmes drivers. 
 Les composants sont implantés sur un circuit imprimé 100mmx100mm qui sert également de chassis (fichier _typon_proto_4.svg_). Les moteurs sont fixés au chassis à l'aide de 2 morceaux de cornière aluminium de 20mmx20mm. 
 
 <p align="center">
-  <img src="./photo_2.png" width="400" />
+  <img src="./pcb.png" width="700" />
 <p/>
   
 Les roues sont fabriquées en impression 3D (fichier _roues.stl_). Les pneus sont faits en chambre à air de vélo (2 couches).
