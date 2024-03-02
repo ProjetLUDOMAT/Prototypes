@@ -9,9 +9,41 @@ MODELE PROGRAMMABLE
 pas de 15 cm
 correction des erreurs automatique entre les 2 moteurs ( v / TRIM ) 
 freinage sur les derniers cm
+masque pour avoir une télécommande unique 
+
+Les 3 paramètres de controle sont donnés en nombre de tics/tacs de l'odomètre
+
+#define TICS_TOURS 20 // tours pour faire 90 °  
+#define TICS_PARCOURS 25 // parcours 15 cm
+#define TICS_FREINAGE 10 // freinage sur les derniers "tics"
+
+Sonde[TICS_PARCOURS] donne les durées entre les tics/tacs de l'odomètre sur la sortie USB en nombre décroissant ( 0,0 = point d'arrivée )
+
+EXEMPLE :
+
+ISR 0:1K 50
+36,22 19,23 29,40 16,18 27,32 14,16 23,26 12,13 20,22 11,10 19,21 12,11 20,21 12,11 22,23 13,12 25,25 17,14 41,34 24356,24352 0,0 0,0 0,0 0,0 0,0
+
+36,22 >> 36 tics à droite et 22 à gauche
+
+ISR 0:1 >> position d'arrivée réalisée
+
+K 50 >> coefficient K : commande tout ou rien pour une durée avec un seuil objectif de 50 ms entre tics
+
+phase freinage dans les 10 derniers tics
+
+36,22 19,23 29,40 16,18 27,32 14,16 23,26 12,13 20,22
+
+accélération de départ
+
+11,10 19,21 12,11 20,21 12,11 22,23 13,12 25,25 17,14 41,34 24356,24352
 
  */
 #include "telecommande.h"
+#include <Adafruit_NeoPixel.h>
+#define PIN        D8 // On Trinket or Gemma, suggest changing this to 1
+#define NUMPIXELS 1 // Popular NeoPixel ring size
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800); 
 
 #define moteur1A D1
 #define moteur1B D2
@@ -19,25 +51,9 @@ freinage sur les derniers cm
 #define moteur2B D4
 
 #define IR D6
-#define GND D8
 #define ISR D7
 #define ISR2 D5
 
-// ------------- télécommande
-
-#define HAUT 0x205D609F
-#define DROITE 0x205D58A7
-#define BAS 0x205D40BF
-#define GAUCHE 0x205D708F
-#define STOP  0x205DE01F
-#define ARRET  0x205D38C7
-// ------------- ajout d'un 2° télécommande
-#define HAUT1 0x1FE1CE3
-#define DROITE1 0x1FE9C63
-#define BAS1 0x1FE02FD
-#define GAUCHE1 0x1FEEC13
-#define STOP1  0x1FEC837
-#define ARRET1  0x1FE817E 
 // ------------- direction
 #define avant 1
 #define arriere 2
@@ -46,6 +62,7 @@ freinage sur les derniers cm
 
 #define TEMPO 1000 // temporisation 
 
+int mask ; // masque des interruptions IR
 int lastDirection = 1;
 int lastRotation = 0; // sens de rotation 
 int isr_compte; // décompte pour 1 tour 
@@ -61,17 +78,17 @@ int erreur2=0;
 // ---------------------------Forth-------------
 #define TRIM 2 // erreur entre moteur 
 #define NEUTRE 0 // zone neutre aveugle entre moteurs
-#define TOURS 20 // tours pour faire 90 °  
-#define PARCOURS 25 // parcours 15 cm
-#define FREINAGE 10 // freinage sur les derniers cm
+#define TICS_TOURS 20 // tours pour faire 90 °  
+#define TICS_PARCOURS 25 // parcours 15 cm
+#define TICS_FREINAGE 10 // freinage sur les derniers cm
 #define MAX 100
 int Index=0;
 byte Forth[MAX]; // pile Forth
 int vitesse = 255;  // 0 à 255
 int programmation=0;
 int frein=50;
-int Sonde[PARCOURS]; // temps de parcours par tick
-int Sonde2[PARCOURS];
+int Sonde[TICS_PARCOURS]; // temps de parcours par tick
+int Sonde2[TICS_PARCOURS];
 
 IRrecv irrecv(IR);
 decode_results results;
@@ -80,13 +97,17 @@ int countM=0 , countD=0 ; // nb d'impulsions IR reçues
 
 
 void setup() {
+
+
+  pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
+                                pixels.setPixelColor(0, pixels.Color(0, 0, 128));pixels.show(); // BLEU
   pinMode(ISR, INPUT_PULLUP);
     pinMode(ISR2, INPUT_PULLUP);
     attachInterrupt(ISR,isr,CHANGE);
         attachInterrupt(ISR2,isr2,CHANGE);
  //   attachInterrupt(ISR,isr,FALLING); 
-  pinMode(GND, OUTPUT);      // board IR
-  digitalWrite(GND, LOW);
+//  pinMode(GND, OUTPUT);      // board IR
+//  digitalWrite(GND, LOW);
   Serial.begin(115200);
     empile(droite);
  empile(gauche);
@@ -114,8 +135,8 @@ ICACHE_RAM_ATTR void isr2() {
   if ( isr_compte2 >= 0 ) Sonde2[isr_compte2] = isr_ms2;
   isr_timer2 += isr_ms2;
 }
-void printSonde(){
-  for (int i =0 ; i < PARCOURS ; i++)  {
+void printSonde(){ // sonde de visualisation de l'algo
+  for (int i =0 ; i < TICS_PARCOURS ; i++)  {
       Serial.print(Sonde[i]); // temps de parcours par tick
       Serial.print(","); 
       Serial.print(Sonde2[i]); // temps de parcours par tick
@@ -131,26 +152,26 @@ void empile( byte x ){
 }
 void execute() {
   for(int x=0 ; x < Index ; x++){
-    moteurC(Forth[x]);
+    moteurTimerFixe(Forth[x]);
   }   
 //  Index=0; mémorise le trajet depuis le début
 }
-void moteurC( int x){
+void moteurTimerFixe( int x){ // routine temporisée suivant un timer fixe pour l'éxécution de la pile 
       timer= millis();
-    isr_compte = TOURS; isr_compte2 = TOURS;
+    isr_compte = TICS_TOURS; isr_compte2 = TICS_TOURS;
     while ( ( millis() - timer ) < 1000)
     {
-          moteurH(x);
+          moteurAsynchrone(x);
         
     }
         stop();   
 }
-void moteurH(int x){ 
+void moteurAsynchrone(int x){ // routine asynchone de lancement du moteur suivant la direction x dans la boucle de lecture IR
   int i=max(isr_compte,isr_compte2); // nb de ticks restants 
    if (i<= 0  ) { 
       stop();   
    } else {
-      if ( i > 10 ) moteur(x, vitesse); else {
+      if ( i > TICS_FREINAGE ) moteur(x, vitesse); else {
           int t = min( isr_ms, isr_ms2 ) ; // durée entre ticks
           int t_objectif =  frein ; 
           if ( t > t_objectif ) moteur(x, vitesse); else moteur(x, vitesse/2);
@@ -243,11 +264,16 @@ void loop() {
        stop();
     }
   }
-  moteurH(lastDirection); // impulsion 
+  moteurAsynchrone(lastDirection); // impulsion 
   if (irrecv.decode(&results)) {
       mmm= millis();    dodo= millis();
     // print() & println() can't handle printing long longs. (uint64_t)
     serialPrintUint64(results.value, HEX);
+   if ( (mask == 0) && ((results.value == ONOFF) || (results.value == ONOFF1)) )  { // premier appui sur ON OFF
+       mask = results.value >> 16 ; // enregistre le masque 
+       pixels.setPixelColor(0, pixels.Color(128, 0, 0));pixels.show(); // execution VERT
+   }
+   else if ( results.value >> 16 == mask ) {
     switch (results.value){
 //------------------ vitesse --------------------
       case PLUS : 
@@ -268,7 +294,7 @@ void loop() {
             empile( avant); 
             stop();
            } else {
-            isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
+            isr_compte = TICS_PARCOURS ; isr_compte2 = TICS_PARCOURS ; // initialise avec erreur précédente
             moteur(avant,vitesse);countM++;
            }
              break;
@@ -278,20 +304,20 @@ void loop() {
               empile( arriere); stop();
             }
             else {
-               isr_compte = PARCOURS ; isr_compte2 = PARCOURS ; // initialise avec erreur précédente
+               isr_compte = TICS_PARCOURS ; isr_compte2 = TICS_PARCOURS ; // initialise avec erreur précédente
                moteur(arriere,vitesse);countM++;
             }
              break;
 //-----------------------------   virage  ---------------------  +  -
        case RIGHT : 
        case RIGHT1 :
-             isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+             isr_compte = TICS_TOURS ; isr_compte2 = TICS_TOURS ; // initialise avec erreur précédente
              moteur(droite,vitesse);countM++;
              if(programmation) empile( droite);        
              break;
        case   LEFT :
        case   LEFT1 :
-            isr_compte = TOURS ; isr_compte2 = TOURS ; // initialise avec erreur précédente
+            isr_compte = TICS_TOURS ; isr_compte2 = TICS_TOURS ; // initialise avec erreur précédente
             moteur(gauche,vitesse);countM++;       
             if(programmation) empile( gauche);
             break;
@@ -304,17 +330,21 @@ void loop() {
 //---------------- ON/OFF touche rouge ---------------
       case   ONOFF :
       case   ONOFF1 :
+
             stop(); // arret moteur
             programmation = 1 ;
+                  pixels.setPixelColor(0, pixels.Color(0, 128, 0));pixels.show(); // programmation ROUGE
             Index=0;erreur=0;erreur2=0;  isr_compte = 0 ;isr_compte2 = 0 ;lastDirection = avant;
             break;
    //---------------- retour  ---------------
       case   BACK :
       case   BACK1 :
             stop();
-           execute();
             programmation = 0 ;
+                          pixels.setPixelColor(0, pixels.Color(128, 0, 0));pixels.show(); // execution VERT
+                                     execute();
             break;
+    }
    }
     Serial.println("");
     irrecv.resume();  // Receive the next value
